@@ -3,6 +3,11 @@
   "name": "Instarols",
   "version": "0.1.0",
   "description": "YouTube-style controls for Instagram Reels: timeline scrubbing, volume, playback speed, and play/pause.",
+  "icons": {
+    "16": "content/logo.svg",
+    "48": "content/logo.svg",
+    "128": "content/logo.svg"
+  },
   "permissions": ["storage"],
   "content_scripts": [
     {

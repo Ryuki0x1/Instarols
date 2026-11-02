@@ -1,5 +1,5 @@
 /* control-playpause.js — play/pause button that mirrors real video state
-   (listens to play/pause/ended, never assumes). */
+   (listens to play/pause/ended, never assumes). SVG-drawn icons. */
 (() => {
   const Instarols = window.Instarols;
   let btn = null;
@@ -8,8 +8,10 @@
 
   function sync() {
     if (!video) return;
-    btn.classList.toggle('is-paused', video.paused);
     const paused = video.paused;
+    btn.classList.toggle('is-paused', paused);
+    btn.querySelector('.play-icon').style.display = paused ? 'block' : 'none';
+    btn.querySelector('.pause-icon').style.display = paused ? 'none' : 'block';
     btn.title = paused ? 'Play' : 'Pause';
     btn.setAttribute('aria-label', btn.title);
   }
@@ -26,6 +28,14 @@
       btn = document.createElement('button');
       btn.className = 'icon-btn play is-paused';
       btn.type = 'button';
+      btn.innerHTML = `
+        <svg class="play-icon" viewBox="0 0 24 24" width="20" height="20" fill="#fff">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg class="pause-icon" viewBox="0 0 24 24" width="20" height="20" fill="#fff" style="display:none">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+      `;
       btn.addEventListener('click', onToggle);
       row.appendChild(btn);
     },

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#1A1B22"/>
+  <!-- reel frame -->
+  <circle cx="16" cy="13" r="5.6" fill="none" stroke="#fff" stroke-width="1.6"/>
+  <circle cx="16" cy="13" r="1.4" fill="#fff"/>
+  <!-- play triangle inside reel -->
+  <path d="M13 10.6 l6 4.8 -6 4.8 z" fill="#fff"/>
+  <!-- volume level bar -->
+  <rect x="13" y="22.5" width="4" height="2" rx="1" fill="#4c8dff"/>
+  <rect x="17.5" y="22.5" width="2" height="2" rx="1" fill="rgba(255,255,255,0.35)"/>
+</svg>

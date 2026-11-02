@@ -91,20 +91,7 @@
     }
     .icon-btn:hover, .icon-btn:focus-visible { background: rgba(255,255,255,0.12); outline: none; }
     .icon-btn:focus-visible { outline: 2px solid #4c8dff; }
-    /* play / pause (CSS-drawn, no assets) */
-    .icon-btn.play::before, .icon-btn.play::after { content: ''; display: block; background: #fff; border-radius: 2px; }
-    .icon-btn.play:not(.is-paused)::before { width: 4px; height: 14px; margin-right: 4px; }
-    .icon-btn.play:not(.is-paused)::after  { width: 4px; height: 14px; }
-    .icon-btn.play.is-paused::before {
-      width: 0; height: 0; margin: 0;
-      background: transparent; border: 8px solid transparent; border-left: 13px solid #fff;
-      border-right: 0; border-radius: 0; transform: translateX(2px);
-    }
-    .icon-btn.mute::before, .icon-btn.mute::after { content: ''; background: #fff; display: block; }
-    .icon-btn.mute::before { width: 3px; height: 10px; margin-right: 3px; border-radius: 1px; }
-    .icon-btn.mute::after  { width: 7px; height: 10px; border-radius: 0 3px 3px 0; }
-    .icon-btn.mute.is-muted::after { width: 2px; height: 10px; transform: translateX(4px); }
-    .icon-btn.mute.is-muted::before { transform: translateX(4px); }
+    .time { white-space: nowrap; font-variant-numeric: tabular-nums; opacity: 0.9; margin: 0 6px 0 4px; }
     .vol {
       appearance: none; -webkit-appearance: none; width: 84px; height: 3px;
       border-radius: 2px; outline: none; cursor: pointer;
@@ -114,7 +101,6 @@
       background-repeat: no-repeat;
     }
     .vol::-webkit-slider-thumb { -webkit-appearance: none; width: 11px; height: 11px; border-radius: 50%; background: #fff; }
-    .time { white-space: nowrap; font-variant-numeric: tabular-nums; opacity: 0.9; margin: 0 6px 0 4px; }
     .speed-btn { width: auto; min-width: 40px; padding: 6px 8px; font-weight: 600; }
     .speed-menu {
       position: absolute; right: 8px; bottom: calc(100% + 8px);
