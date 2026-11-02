@@ -1,7 +1,5 @@
 # Instarols
 
-<p align="center"><img src="docs/screenshots/hero-revealed.png" width="600" alt="Instarols control bar revealed on an Instagram Reel"></p>
-
 > **YouTube-style controls for Instagram Reels.** Scrub the timeline like YouTube, control volume, choose playback speed, and play/pause — with an intent-based reveal that only shows when you need it.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -26,22 +24,6 @@ Instagram Reels has no timeline scrubber, no speed picker, and its volume contro
 | 🚫 **No collisions** | Never overlaps Instagram's native audio/mute controls. The native mute button stays fully clickable. |
 
 ## Screenshots tour
-
-<p align="center">
-  <img src="docs/screenshots/clean-state.png" width="240" alt="Clean reel view — Instarols bar is hidden until intent is shown" />
-  <img src="docs/screenshots/hero-revealed.png" width="240" alt="Intent reveal — control bar slides in over the reel" />
-  <img src="docs/screenshots/volume-active.png" width="240" alt="Volume slider active at 60%" />
-  <img src="docs/screenshots/muted-state.png" width="240" alt="Muted state — VscMute icon shown" />
-  <img src="docs/screenshots/speed-menu.png" width="240" alt="Playback speed menu open showing 0.25×–2× options" />
-  <img src="docs/screenshots/scrubber-active.png" width="240" alt="Timeline scrubber with playhead at 50%" />
-</p>
-
-- **Clean state** — the bar is completely hidden until you approach the lower section of the reel.
-- **Hero revealed** — all four controls visible: play/pause, mute, volume slider, speed picker, and timeline scrubber.
-- **Volume active** — slider at 60% with fill indicator.
-- **Muted state** — VscMute speaker-with-slash icon, click to unmute to your remembered level.
-- **Speed menu** — 0.25×–2× speed options with the active speed highlighted.
-- **Scrubber active** — dragging the playhead commits the seek on release (no frame-by-frame seeking that stutters the stream).
 
 ## How it works
 
