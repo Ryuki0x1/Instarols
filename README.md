@@ -6,10 +6,13 @@
 [![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-blue?logo=google-chrome)](https://chromewebstore.google.com/)
 [![Firefox Add-on](https://img.shields.io/badge/Firefox-Add--on-orange?logo=firefox-browser)](https://addons.mozilla.org/)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-green)](https://developer.chrome.com/docs/extensions/mv3/)
+[![Zero Dependencies](https://img.shields.io/badge/Zero%20Dependencies-yes-brightgreen)](package.json)
 
 ## Why it exists
 
-Instagram Reels has no timeline scrubber, no speed picker, and its volume control is buried. If you want to re-watch a moment, slow down a tutorial, or adjust volume without hunting for the native mute button, you're stuck. Instarols adds a YouTube-style player bar that overlays the active reel — nothing more, nothing less.
+Instagram Reels has **no timeline scrubber, no speed picker, and its volume control is buried**. If you want to re-watch a moment, slow down a tutorial, or adjust volume without hunting for the native mute button, you're stuck. Instarols adds a YouTube-style player bar that overlays the active reel — nothing more, nothing less.
+
+**Keywords:** instagram-reels, instagram-reel-controls, reel-scrubber, instagram-video-speed, instagram-volume-control, youtube-style-timeline, browser-extension, manifest-v3, chrome-extension, firefox-extension
 
 ## What it does
 
@@ -22,6 +25,10 @@ Instagram Reels has no timeline scrubber, no speed picker, and its volume contro
 | 👁️ **Intent-based reveal** | The bar stays hidden until you move your pointer toward the lower section of the reel — then it slides in. Hides on idle, leave, or scroll. |
 | 📱 **Responsive** | Recomputes layout on window/video resize. Auto-hides when the viewing area is too small. Explore-grid preview tiles never get controls — only the engaged reel does. |
 | 🚫 **No collisions** | Never overlaps Instagram's native audio/mute controls. The native mute button stays fully clickable. |
+
+## Topics / Tags
+
+`instagram-reels` `instagram-video-controls` `reel-scrubber` `instagram-playback-speed` `instagram-volume-control` `youtube-style-scrubber` `timeline-scrubber` `video-player-extension` `chrome-extension` `firefox-extension` `browser-extension` `manifest-v3` `instagram-reel-player` `reel-timeline` `social-media-video` `userscript` `vanilla-javascript` `zero-dependencies`
 
 ## Screenshots tour
 
@@ -73,9 +80,11 @@ Instarols has no settings page. Everything is configured through the controls th
 | Firefox | ✅ (via `about:debugging`; addons.mozilla.org publishing pending) |
 | Safari | ❌ Not covered — requires separate Apple Developer / App Store packaging |
 
-## Tags / Topics
+## GitHub Topics
 
-`instagram-reels` `video-controls` `playback-speed` `volume-control` `timeline-scrubber` `chrome-extension` `firefox-extension` `browser-extension` `instagram` `reel` `video-player` `youtube-style-scrubber` `manifest-v3` `userscript`
+Add these topics to the repository for discoverability:
+
+`instagram-reels` `instagram-video-controls` `reel-scrubber` `instagram-playback-speed` `instagram-volume-control` `youtube-style-scrubber` `timeline-scrubber` `video-player-extension` `chrome-extension` `firefox-extension` `browser-extension` `manifest-v3` `instagram-reel-player` `reel-timeline` `social-media-video` `userscript` `vanilla-javascript` `zero-dependencies`
 
 ## Icon credits
 
