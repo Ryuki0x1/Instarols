@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Instarols",
+  "version": "0.1.0",
+  "description": "YouTube-style controls for Instagram Reels: timeline scrubbing, volume, playback speed, and play/pause.",
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "js": [
+        "content/video-tracker.js",
+        "content/ui.js",
+        "content/control-playpause.js",
+        "content/control-volume.js",
+        "content/control-speed.js",
+        "content/control-scrubber.js",
+        "content/main.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

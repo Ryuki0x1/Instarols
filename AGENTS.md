@@ -1,4 +1,6 @@
-# Reels Audio Controller
+# Instarols (Instagram Reels controls)
+
+## Stack
 
 ## Stack
 - Language/runtime: Vanilla JavaScript (ES2023), no transpiler
@@ -24,8 +26,8 @@
   driven by the `<video>` element it is bound to.
 
 ## Context
-- Purpose: overlay player controls on Instagram Reels (web): timeline
-  scrubbing like YouTube, volume control, playback speed, play/pause.
+- Purpose: Instarols — overlay player controls on Instagram Reels (web):
+  timeline scrubbing like YouTube, volume control, playback speed, play/pause.
 - Instagram's DOM/class names change constantly. NEVER hardcode IG-specific
   CSS selectors as the primary mechanism — bind functions to generic
   `<video>` elements found within the reels viewing surface and resolve UI
@@ -34,6 +36,16 @@
 - The injected control bar is our own shadow-DOM/positioned overlay on the
   active video; it must not fight IG's own gesture layer (clicks on our overlay
   stop propagation).
+- Native control collision: Instagram has its own audio/mute controls. Instarols
+  must never overlap or block them — map native widget positions before
+  docking our bar docked under/around them; the native mute button stays
+  fully clickable (our volume extends, not replaces).
+- Reveal is intent-based: the bar appears only when the pointer approaches the
+  lower band of the video with intent (enter-then-settle), and hides on idle,
+  leave, or scroll. It must also behave responsively: recompute layout on
+  window/video resize (ResizeObserver) and auto-hide when the viewing area is
+  too small (explore-grid preview tiles never get controls — only the engaged
+  reel does).
 - Only these host permissions: `instagram.com` (reels surface). Nothing
   broader.
 
