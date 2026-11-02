@@ -194,8 +194,8 @@
     const inBand =
       e.clientX >= r.left - 8 &&
       e.clientX <= r.right + 8 &&
-      ((e.clientY >= bandTop && e.clientY <= r.bottom + 28) || // lower band
-        (e.clientY >= r.top && e.clientY <= bandTop)); // already inside video
+      e.clientY >= bandTop &&
+      e.clientY <= r.bottom + 28; // lower intent band only
     const barR = bar.getBoundingClientRect();
     const inBar =
       e.clientX >= barR.left &&
