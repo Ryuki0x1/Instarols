@@ -5,13 +5,13 @@
 (() => {
   const Instarols = window.Instarols;
 
-  /* ----- persisted settings (chrome.storage.local, guarded when absent) --- */
+  /* ----- persisted settings (browser.storage.local, guarded when absent) --- */
   const settings = (() => {
     const cache = { speed: 1, volume: null };
     let ready = Promise.resolve();
     try {
       if (chrome?.storage?.local) {
-        ready = chrome.storage.local
+        ready = browser.storage.local
           .get(Object.keys(cache))
           .then((stored) => Object.assign(cache, stored))
           .catch(() => {});
@@ -25,7 +25,7 @@
       set(patch) {
         Object.assign(cache, patch);
         try {
-          chrome?.storage?.local?.set(patch);
+          browser?.storage?.local?.set(patch);
         } catch {
           /* ignore */
         }
