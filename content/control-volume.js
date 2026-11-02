@@ -52,8 +52,8 @@
       if (video === null) return;
       const remembered = Instarols.settings.get('volume');
       if (Number.isFinite(remembered)) {
-        video.volume = Math.min(1, Math.max(0, remembered));
-        if (video.muted && remembered > 0) video.muted = false;
+        video.muted = false;      // unmute first
+        video.volume = Math.min(1, Math.max(0, remembered));  // then set level
       }
       sync();
     });
@@ -133,7 +133,25 @@
       off = Instarols.listen(video, {
         volumechange: () => {
           sync();
-          schedulePersist();
+          // IG mutes each new reel by default — restore remembered volume after a beat
+          if (video.muted && video.volume === 0) {
+            setTimeout(() => {
+              if (video === null) return;
+              if (video.muted && video.volume === 0) {
+                Instarols.settings.ready.then(() => {
+                  if (video === null) return;
+                  const remembered = Instarols.settings.get('volume');
+                  if (Number.isFinite(remembered) && remembered > 0) {
+                    video.muted = false;
+                    video.volume = remembered;
+                    sync();
+                  }
+                });
+              }
+            }, 300);
+          } else {
+            schedulePersist();
+          }
         },
       });
     },

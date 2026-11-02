@@ -29,11 +29,11 @@
       btn.className = 'icon-btn play is-paused';
       btn.type = 'button';
       btn.innerHTML = `
-        <svg class="play-icon" viewBox="0 0 24 24" width="20" height="20" fill="#fff">
-          <path d="M8 5v14l11-7z"/>
+        <svg class="play-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="0">
+          <path d="M3.78 2L3 2.41v12l.78.42 9-6V8l-9-6zM4 13.48V3.35l7.6 5.07L4 13.48z"/>
         </svg>
-        <svg class="pause-icon" viewBox="0 0 24 24" width="20" height="20" fill="#fff" style="display:none">
-          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        <svg class="pause-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" stroke="currentColor" stroke-width="0" style="display:none">
+          <path d="M4.5 3H6v10H4.5V3zm7 0v10H10V3h1.5z"/>
         </svg>
       `;
       btn.addEventListener('click', onToggle);

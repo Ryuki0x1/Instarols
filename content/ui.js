@@ -62,9 +62,9 @@
     *, *::before, *::after { box-sizing: border-box; }
     .bar {
       position: absolute;
-      left: 10px; right: 10px;
-      bottom: ${baseBottom}px;
-      padding: 6px 8px 6px 10px;
+      left: 0; right: 0;
+      bottom: -6px;
+      padding: 6px 8px 6px 8px;
       border-radius: 10px;
       background: rgba(20, 21, 26, 0.88);
       backdrop-filter: blur(10px);
@@ -101,7 +101,8 @@
       background-repeat: no-repeat;
     }
     .vol::-webkit-slider-thumb { -webkit-appearance: none; width: 11px; height: 11px; border-radius: 50%; background: #fff; }
-    .speed-btn { width: auto; min-width: 40px; padding: 6px 8px; font-weight: 600; }
+    .speed-btn { width: auto; min-width: 36px; padding: 6px 6px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
+    .rate-label { font-size: 11px; font-variant-numeric: tabular-nums; }
     .speed-menu {
       position: absolute; right: 8px; bottom: calc(100% + 8px);
       background: rgba(20,21,26,0.95); border-radius: 10px; padding: 4px;
@@ -251,6 +252,8 @@
     host.style.top = `${Math.round(r.top)}px`;
     host.style.width = `${Math.round(r.width)}px`;
     host.style.height = `${Math.round(r.height)}px`;
+    /* Dock the bar at the bottom edge of the reel, overlapping slightly */
+    bar.style.bottom = '-6px';
     bar.classList.toggle('compact', r.width < 430);
     const tooSmall = r.width < 260 || r.height < 300;
     if (tooSmall !== suppressed) {
@@ -287,7 +290,7 @@
       }
       if (!foreign) break;
       offset += 34;
-      bar.style.bottom = `${baseBottom + offset}px`;
+      bar.style.bottom = `${-6 + offset}px`;
     }
   }
 
@@ -296,7 +299,7 @@
   function setActive(video) {
     current = video || null;
     hideNow();
-    bar.style.bottom = `${baseBottom}px`;
+    bar.style.bottom = '-6px';
     for (const c of ui.controls) c.setVideo?.(video);
     if (video && !rafId) rafId = requestAnimationFrame(frame);
   }
