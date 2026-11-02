@@ -1,11 +1,13 @@
 /* control-volume.js — mute toggle + 0–100% slider. Persists last volume in
-   chrome.storage.local so it survives reloads; IG's native mute stays usable. */
+   chrome.storage.local so it survives reloads AND reel-to-reel scrolling.
+   IG's native mute stays usable. */
 (() => {
   const Instarols = window.Instarols;
   let btn = null;
   let slider = null;
   let video = null;
   let off = null;
+  let persistTimer = null;
 
   function syncVolumeSlider() {
     if (!video) return;
@@ -38,13 +40,41 @@
     }
   }
 
+  function schedulePersist() {
+    if (!video) return;
+    if (persistTimer) clearTimeout(persistTimer);
+    persistTimer = setTimeout(() => persist(video.volume), 400);
+  }
+
+  function applyRemembered() {
+    if (!video) return;
+    Instarols.settings.ready.then(() => {
+      if (video === null) return;
+      const remembered = Instarols.settings.get('volume');
+      if (Number.isFinite(remembered)) {
+        video.volume = Math.min(1, Math.max(0, remembered));
+        if (video.muted && remembered > 0) video.muted = false;
+      }
+      sync();
+    });
+  }
+
   function onMuteToggle() {
     if (!video) return;
     if (video.muted || video.volume === 0) {
-      video.muted = false;
-      if (video.volume === 0) video.volume = 0.5;
+      Instarols.settings.ready.then(() => {
+        if (video === null) return;
+        const remembered = Instarols.settings.get('volume');
+        const target = Number.isFinite(remembered) && remembered > 0 ? remembered : 0.5;
+        video.volume = target;
+        video.muted = false;
+        sync();
+        persist(target);
+      });
     } else {
       video.muted = true;
+      sync();
+      persist(0);
     }
   }
 
@@ -56,7 +86,8 @@
       if (v > 0) video.muted = false;
     }
     slider.style.setProperty('--fill', `${Math.round(v * 100)}%`);
-    persist(v);
+    syncMute();
+    schedulePersist();
   }
 
   function onSliderChange() {
@@ -100,16 +131,14 @@
       off = null;
       video = v || null;
       if (!video) return;
-      /* Remembered volume survives reloads via chrome.storage.local */
-      Instarols.settings.ready.then(() => {
-        if (video !== v) return; // guard against stale callbacks
-        const remembered = Instarols.settings.get('volume');
-        if (Number.isFinite(remembered) && !video.muted) {
-          video.volume = Math.min(1, Math.max(0, remembered));
-        }
-        sync();
+      /* Remembered volume survives reloads AND reel-to-reel scrolling */
+      applyRemembered();
+      off = Instarols.listen(video, {
+        volumechange: () => {
+          sync();
+          schedulePersist();
+        },
       });
-      off = Instarols.listen(video, { volumechange: sync });
     },
   });
 })();
