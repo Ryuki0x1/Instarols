@@ -115,7 +115,7 @@
 
   Instarols.ui.registerControl({
     id: 'scrubber',
-    mount(strip) {
+    mount({ strip }) {
       track = document.createElement('div');
       track.className = 'scrub';
       track.setAttribute('role', 'slider');

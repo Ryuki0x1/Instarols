@@ -51,7 +51,7 @@
 
   Instarols.ui.registerControl({
     id: 'speed',
-    mount(row) {
+    mount({ row }) {
       btn = document.createElement('button');
       btn.className = 'icon-btn speed-btn';
       btn.type = 'button';

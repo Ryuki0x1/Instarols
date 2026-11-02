@@ -22,7 +22,7 @@
 
   Instarols.ui.registerControl({
     id: 'playpause',
-    mount(row) {
+    mount({ row }) {
       btn = document.createElement('button');
       btn.className = 'icon-btn play is-paused';
       btn.type = 'button';

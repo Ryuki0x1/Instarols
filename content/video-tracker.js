@@ -51,6 +51,11 @@
       this.active = next;
       for (const cb of this._cbs) cb(next, prev);
     },
+
+    elect() {
+      /* Public: force re-evaluation (e.g. after a resize changes eligibility). */
+      this._elect();
+    },
   };
 
   function pickEngagedVideo() {

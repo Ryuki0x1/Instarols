@@ -321,7 +321,16 @@
 
   Instarols.ui.boot = function () {
     build();
-    for (const c of ui.controls) c.mount?.({ strip: stripEl, row: rowEl });
+    const mounted = [];
+    for (const c of ui.controls) {
+      try {
+        c.mount?.({ strip: stripEl, row: rowEl });
+        mounted.push(c.id);
+      } catch (e) {
+        mounted.push(c.id + '!ERR:' + String(e.message || e).slice(0, 80));
+      }
+    }
+    host.dataset.mounted = mounted.join('|');
     Instarols.tracker.onChange(setActive);
     setActive(Instarols.tracker.active);
 
@@ -330,6 +339,7 @@
     document.addEventListener('mouseleave', () => hideNow(), { passive: true });
     window.addEventListener('scroll', onScrollCapture, { capture: true, passive: true });
     window.addEventListener('resize', () => {
+      Instarols.tracker.elect();
       if (current) frame();
     });
   };

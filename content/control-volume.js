@@ -62,7 +62,7 @@
 
   Instarols.ui.registerControl({
     id: 'volume',
-    mount(row) {
+    mount({ row }) {
       btn = document.createElement('button');
       btn.className = 'icon-btn mute';
       btn.type = 'button';
